@@ -5,15 +5,16 @@ import (
 	"io"
 	"log"
 
-	"github.com/Xuanwo/bard/utils"
 	"github.com/Xuanwo/storage/types/pairs"
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/context"
 
 	"github.com/Xuanwo/bard/contexts"
 	"github.com/Xuanwo/bard/model"
+	"github.com/Xuanwo/bard/utils"
 )
 
+// Create will handle poem create.
 func Create(ctx iris.Context) {
 	file, info, err := ctx.FormFile("file")
 	if err != nil {
@@ -51,6 +52,7 @@ func Create(ctx iris.Context) {
 	})
 }
 
+// Get will handle poem content get.
 func Get(ctx iris.Context) {
 	id := ctx.Params().Get("short_id")
 

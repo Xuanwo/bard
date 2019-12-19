@@ -13,11 +13,9 @@ import (
 	"github.com/Xuanwo/bard/handler"
 )
 
+// Cmd is the main command for bard.
 var Cmd = cobra.Command{
-	Use:   "",
-	Short: "",
-	Long:  "",
-	Args:  nil,
+	Use: "bard",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		configPath, err := cmd.Flags().GetString("config")
 		if err != nil {

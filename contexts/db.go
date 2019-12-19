@@ -17,9 +17,11 @@ import (
 
 var (
 	// DB is the globally shared DB session.
-	DB      *gorm.DB
+	DB *gorm.DB
+	// Storage is the globally shared Storage session.
 	Storage storage.Storager
 
+	// Server is the globally shared server related config.
 	Server struct {
 		PublicURL   string
 		Listen      string
@@ -32,11 +34,13 @@ var (
 func Setup() (err error) {
 	errorMessage := "contexts Setup: %w"
 
+	// Setup server.
 	Server.PublicURL = viper.GetString("public_url")
 	Server.Key = viper.GetString("key")
 	Server.Listen = viper.GetString("listen")
 	Server.MaxFileSize = viper.GetInt64("max_file_size")
 
+	// Setup DB.
 	DB, err = gorm.Open(
 		viper.GetString("database.type"),
 		viper.GetString("database.connection"),
@@ -46,6 +50,7 @@ func Setup() (err error) {
 	}
 	DB.AutoMigrate(&model.Poem{})
 
+	// Setup storage.
 	Storage = posixfs.NewClient()
 	err = Storage.Init(pairs.WithWorkDir(viper.GetString("storage.connection")))
 	if err != nil {

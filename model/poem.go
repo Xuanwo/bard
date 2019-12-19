@@ -6,6 +6,7 @@ import (
 	"github.com/Xuanwo/bard/utils"
 )
 
+// Model is the default model for all.
 type Model struct {
 	ID string `gorm:"primary_key"`
 
@@ -24,6 +25,7 @@ type Poem struct {
 	ExpiresIn   *time.Time
 }
 
+// NewPoem will sing a new poem.
 func NewPoem(name, contentType string) *Poem {
 	t := time.Now()
 	p := &Poem{
