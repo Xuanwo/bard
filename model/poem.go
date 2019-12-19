@@ -3,7 +3,7 @@ package model
 import (
 	"time"
 
-	"github.com/google/uuid"
+	"github.com/Xuanwo/bard/utils"
 )
 
 type Model struct {
@@ -25,14 +25,14 @@ type Poem struct {
 }
 
 func NewPoem(name, contentType string) *Poem {
-	id := uuid.New().String()
+	t := time.Now()
 	p := &Poem{
 		Model: Model{
-			ID:        id,
-			CreatedAt: time.Now(),
-			UpdatedAt: time.Now(),
+			ID:        utils.GenerateID(),
+			CreatedAt: t,
+			UpdatedAt: t,
 		},
-		ShortID:     id[32:],
+		ShortID:     utils.GenerateShortID(),
 		Name:        name,
 		ContentType: contentType,
 		ExpiresIn:   nil,
