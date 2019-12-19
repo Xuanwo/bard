@@ -52,9 +52,9 @@ var Cmd = cobra.Command{
 			})
 		})
 		app.Post("/", handler.Create)
-		app.Get("/{short_id}", handler.Get)
+		app.Get("/{short_id:string max(6)}", handler.Get)
 
-		err = app.Run(iris.Addr(":8080"))
+		err = app.Run(iris.Addr(contexts.Server.Listen))
 		if err != nil {
 			log.Fatalf("Server existed: %v", err)
 		}

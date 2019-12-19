@@ -21,6 +21,7 @@ var (
 	Storage storage.Storager
 
 	Server struct {
+		PublicURL   string
 		Listen      string
 		Key         string
 		MaxFileSize int64
@@ -31,6 +32,7 @@ var (
 func Setup() (err error) {
 	errorMessage := "contexts Setup: %w"
 
+	Server.PublicURL = viper.GetString("public_url")
 	Server.Key = viper.GetString("key")
 	Server.Listen = viper.GetString("listen")
 	Server.MaxFileSize = viper.GetInt64("max_file_size")

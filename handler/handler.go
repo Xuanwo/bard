@@ -47,7 +47,7 @@ func Create(ctx iris.Context) {
 	}
 
 	_, _ = ctx.JSON(iris.Map{
-		"url": fmt.Sprintf("127.0.0.1:8080/%s", p.ShortID),
+		"url": fmt.Sprintf("%s/%s", contexts.Server.PublicURL, p.ShortID),
 	})
 }
 
