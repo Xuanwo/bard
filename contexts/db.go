@@ -5,8 +5,7 @@ import (
 
 	"github.com/Xuanwo/bard/model"
 	"github.com/Xuanwo/storage"
-	"github.com/Xuanwo/storage/services/posixfs"
-	"github.com/Xuanwo/storage/types/pairs"
+	"github.com/Xuanwo/storage/coreutils"
 	"github.com/jinzhu/gorm"
 	"github.com/spf13/viper"
 
@@ -51,8 +50,7 @@ func Setup() (err error) {
 	DB.AutoMigrate(&model.Poem{})
 
 	// Setup storage.
-	Storage = posixfs.NewClient()
-	err = Storage.Init(pairs.WithWorkDir(viper.GetString("storage.connection")))
+	Storage, err = coreutils.OpenStorager(viper.GetString("storage"))
 	if err != nil {
 		return fmt.Errorf(errorMessage, err)
 	}
