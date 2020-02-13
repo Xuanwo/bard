@@ -4,7 +4,7 @@ go 1.13
 
 require (
 	github.com/CloudyKit/fastprinter v0.0.0-20170127035650-74b38d55f37a // indirect
-	github.com/Xuanwo/storage v0.6.0
+	github.com/Xuanwo/storage v0.7.0
 	github.com/ajg/form v1.5.1 // indirect
 	github.com/fasthttp-contrib/websocket v0.0.0-20160511215533-1f3b11f56072 // indirect
 	github.com/imkira/go-interpol v1.1.0 // indirect
