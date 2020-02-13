@@ -1,0 +1,11 @@
+public_url: http://127.0.0.1:8080
+listen: 127.0.0.1:8080
+
+key: secret_key
+max_file_size: 104857600
+
+database:
+  type: sqlite3
+  connection: "/tmp/bard/db"
+
+storage: "fs:///?work_dir=/tmp/bard/data"
